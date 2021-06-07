@@ -27,6 +27,7 @@ public class MQTTConfig {
                                   @Value("${mqtt.broker-url}") String brokerUrl) throws MqttException {
 
         IMqttClient mqttClient = new MqttClient(brokerUrl, clientId);
+        MqttConnectOptions connectOptions = new MqttConnectOptions();
 
         mqttClient.connect(mqttConnectOptions());
 

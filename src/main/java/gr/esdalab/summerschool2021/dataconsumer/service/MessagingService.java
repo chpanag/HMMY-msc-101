@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -45,6 +46,9 @@ public class MessagingService {
         mqttClient.subscribeWithResponse(topic, (tpic, msg) -> {
 
             System.out.println("Messages received: " + msg.toString());
+            MqttMessage mqttMessage = new MqttMessage();
+            mqttMessage.setPayload(new String("Received from summerschool2").getBytes());
+            mqttClient.publish("summerschool/2021/topic/4", mqttMessage);
 
         });
     }
