@@ -1,5 +1,6 @@
 package gr.esdalab.summerschool2021.dataconsumer.config;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
@@ -13,11 +14,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Configuration
+@Data
+@ConfigurationProperties(prefix = "mqtt")
 public class MQTTConfig {
 
+    Map<String, String> topics;
+
     @Bean
-    @ConfigurationProperties(prefix = "mqtt")
     public MqttConnectOptions mqttConnectOptions() {
         return new MqttConnectOptions();
     }
@@ -27,10 +33,13 @@ public class MQTTConfig {
                                   @Value("${mqtt.broker-url}") String brokerUrl) throws MqttException {
 
         IMqttClient mqttClient = new MqttClient(brokerUrl, clientId);
-        MqttConnectOptions connectOptions = new MqttConnectOptions();
 
         mqttClient.connect(mqttConnectOptions());
 
         return mqttClient;
+    }
+
+    public Map<String, String> getTopics(){
+        return this.topics;
     }
 }
