@@ -1,4 +1,4 @@
-package gr.esdalab.summerschool2021.dataconsumer.model;
+package gr.esdalab.msc101.dataconsumer.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,15 +1,13 @@
-package gr.esdalab.summerschool2021.dataconsumer;
+package gr.esdalab.msc101.dataconsumer;
 
-import gr.esdalab.summerschool2021.dataconsumer.model.EventLevel;
-import gr.esdalab.summerschool2021.dataconsumer.model.SensorDTO;
-import gr.esdalab.summerschool2021.dataconsumer.service.RuleService;
+import gr.esdalab.msc101.dataconsumer.model.EventLevel;
+import gr.esdalab.msc101.dataconsumer.model.SensorDTO;
+import gr.esdalab.msc101.dataconsumer.service.RuleService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.annotation.PostConstruct;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

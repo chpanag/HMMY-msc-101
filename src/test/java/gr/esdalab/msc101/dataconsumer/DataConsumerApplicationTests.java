@@ -1,4 +1,4 @@
-package gr.esdalab.summerschool2021.dataconsumer;
+package gr.esdalab.msc101.dataconsumer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

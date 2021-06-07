@@ -11,6 +11,12 @@ Before running the application you need to setup the MQTT broker connection deta
 
 You will find them in `src/main/resources/application.yml`
 
+
+### Test the application
+Run Tests:
+
+`mvn test`
+
 ### Run the application
 Execute the following from command line:
 

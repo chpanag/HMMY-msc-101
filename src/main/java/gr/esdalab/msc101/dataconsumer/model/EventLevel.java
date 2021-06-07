@@ -1,6 +1,4 @@
-package gr.esdalab.summerschool2021.dataconsumer.model;
-
-import lombok.Data;
+package gr.esdalab.msc101.dataconsumer.model;
 
 public enum EventLevel {
     NORMAL("normal"),

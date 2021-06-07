@@ -1,31 +1,23 @@
-package gr.esdalab.summerschool2021.dataconsumer.service;
+package gr.esdalab.msc101.dataconsumer.service;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import gr.esdalab.summerschool2021.dataconsumer.config.MQTTConfig;
-import gr.esdalab.summerschool2021.dataconsumer.model.EventDTO;
-import gr.esdalab.summerschool2021.dataconsumer.model.SensorDTO;
+import gr.esdalab.msc101.dataconsumer.config.MQTTConfig;
+import gr.esdalab.msc101.dataconsumer.model.EventDTO;
+import gr.esdalab.msc101.dataconsumer.model.SensorDTO;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
-import org.springframework.util.SerializationUtils;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Map;
 
 @Service
 @Data

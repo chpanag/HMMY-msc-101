@@ -1,8 +1,8 @@
-package gr.esdalab.summerschool2021.dataconsumer.service;
+package gr.esdalab.msc101.dataconsumer.service;
 
-import gr.esdalab.summerschool2021.dataconsumer.model.EventDTO;
-import gr.esdalab.summerschool2021.dataconsumer.model.EventLevel;
-import gr.esdalab.summerschool2021.dataconsumer.model.SensorDTO;
+import gr.esdalab.msc101.dataconsumer.model.EventDTO;
+import gr.esdalab.msc101.dataconsumer.model.EventLevel;
+import gr.esdalab.msc101.dataconsumer.model.SensorDTO;
 import org.springframework.stereotype.Service;
 
 @Service
