@@ -19,7 +19,7 @@ public class RuleService {
         // @TODO Implement your own rules and populate the eventDTO object
         if (sensorDTO.getValue() <= 15) {
             eventDTO.setLevel(EventLevel.DANGER);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received.Something wrong with ventilation");
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received.Something wrong with the air condition");
         } else if (sensorDTO.getValue() >= 15 && sensorDTO.getValue() <= 20) {
             eventDTO.setLevel(EventLevel.WARN);
             eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Too high, you must heat the environment!");
