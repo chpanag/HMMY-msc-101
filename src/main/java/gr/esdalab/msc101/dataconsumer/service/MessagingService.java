@@ -83,7 +83,7 @@ public class MessagingService {
                 MqttMessage mqttMessage = new MqttMessage();
 //              Set the payload
                 mqttMessage.setPayload(objectMapper.writeValueAsString(eventDTO).getBytes());
-//              Publish to the events topic
+//              Publish to the events topic. Update accordingly if needed
                 mqttClient.publish(mqttConfig.getTopics().get("events"), mqttMessage);
 //            Check if the payload is a EventDTO object
             } else if (checkJsonCompatibility(message, EventDTO.class)) {

@@ -29,6 +29,6 @@ Execute the following from command line:
 `mvn spring-boot:run`
 
 ## Preconfigured Development Environment
-To skip all the above and have a development environment ready sooner, you can import the following ova to your favorite
-hypervisor.
+To skip all the above and have a development environment ready sooner, you can import the provided ova to your favorite
+hypervisor (link has been shared internally through the assignment description).
 
