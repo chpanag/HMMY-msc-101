@@ -1,6 +1,5 @@
 package gr.esdalab.msc101.dataconsumer.config;
 
-import lombok.Data;
 import org.eclipse.paho.client.mqttv3.IMqttClient;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
@@ -13,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 
 @Configuration
-@Data
 @ConfigurationProperties(prefix = "mqtt")
 public class MQTTConfig {
 
@@ -37,5 +35,9 @@ public class MQTTConfig {
 
     public Map<String, String> getTopics(){
         return this.topics;
+    }
+
+    public void setTopics(Map<String, String> topics) {
+        this.topics = topics;
     }
 }
