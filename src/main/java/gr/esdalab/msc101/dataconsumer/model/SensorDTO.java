@@ -1,6 +1,5 @@
 package gr.esdalab.msc101.dataconsumer.model;
 
-
 public class SensorDTO {
 
     String label;
@@ -32,9 +31,6 @@ public class SensorDTO {
 
     @Override
     public String toString() {
-        return "SensorDTO{" +
-                "label='" + label + '\'' +
-                ", value=" + value +
-                '}';
+        return "SensorDTO{label='" + label + "', value=" + value + "}";
     }
 }

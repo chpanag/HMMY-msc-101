@@ -1,6 +1,5 @@
 package gr.esdalab.msc101.dataconsumer.model;
 
-
 public class EventDTO {
     EventLevel level;
     String message;
@@ -31,9 +30,6 @@ public class EventDTO {
 
     @Override
     public String toString() {
-        return "EventDTO{" +
-                "level=" + level +
-                ", message='" + message + '\'' +
-                '}';
+        return "EventDTO{level=" + level + ", message='" + message + "'}";
     }
 }

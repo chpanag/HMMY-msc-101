@@ -1,9 +1,7 @@
 package gr.esdalab.msc101.dataconsumer.model;
 
 public enum EventLevel {
-    NORMAL("normal"),
-    WARN("warn"),
-    DANGER("danger");
+    NORMAL("normal"), WARN("warn"), DANGER("danger");
 
     String value;
 
@@ -13,8 +11,6 @@ public enum EventLevel {
 
     @Override
     public String toString() {
-        return "EventLevel{" +
-                "value='" + value + '\'' +
-                '}';
+        return "EventLevel{value='" + value + "'}";
     }
 }
