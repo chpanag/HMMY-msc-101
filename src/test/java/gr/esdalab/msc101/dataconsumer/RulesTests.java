@@ -12,24 +12,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 @SpringBootTest
 class RulesTests {
 
     private static final Logger log = LogManager.getLogger(RulesTests.class);
 
-
-    SensorDTO outOfOperationLowSensorDTO = new SensorDTO("temp", 5.0);
-    SensorDTO outOfOperationHighSensorDTO = new SensorDTO("temp", 50.0);
-    SensorDTO heatSensorDTO = new SensorDTO("temp", 32.0);
-    SensorDTO coolSensorDTO = new SensorDTO("temp", 16.0);
-    SensorDTO normalSensorDTO = new SensorDTO("temp", 22.0);
+    SensorDTO outOfOperationLowSensorDTO = new SensorDTO("wind", -1.0);
+    SensorDTO outOfOperationHighSensorDTO = new SensorDTO("wind", 15.0);
+    SensorDTO warnSensorDTO = new SensorDTO("wind", 2.0);
+    SensorDTO normalSensorDTO = new SensorDTO("wind", 4.0);
+    SensorDTO hurricaneSensorDTO = new SensorDTO("wind", 11.0);
 
     @Autowired
     RuleService ruleService;
 
     @BeforeAll
-    public static void init(){
+    public static void init() {
         log.info("Tesing RuleService started.");
     }
 
@@ -44,13 +42,13 @@ class RulesTests {
     }
 
     @Test
-    void testHeat() {
-        assertEquals(EventLevel.WARN, ruleService.processData(heatSensorDTO).getLevel());
+    void testWarn() {
+        assertEquals(EventLevel.WARN, ruleService.processData(warnSensorDTO).getLevel());
     }
 
     @Test
-    void testCool() {
-        assertEquals(EventLevel.WARN, ruleService.processData(coolSensorDTO).getLevel());
+    void testHurricane() {
+        assertEquals(EventLevel.DANGER, ruleService.processData(hurricaneSensorDTO).getLevel());
     }
 
     @Test
