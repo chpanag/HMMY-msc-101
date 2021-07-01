@@ -9,32 +9,30 @@ import org.springframework.stereotype.Service;
 public class RuleService {
 
     /**
-     * This method implements a set of rules that apply to the sensorDTO object value
+     * This method implements a set of rules that apply to the sensorDTO object
+     * value
+     * 
      * @param sensorDTO
      * @return
      */
-    public EventDTO processData(SensorDTO sensorDTO){
+    public EventDTO processData(SensorDTO sensorDTO) {
         EventDTO eventDTO = new EventDTO();
 
-        // @TODO Implement your own rules and populate the eventDTO object
-        if (sensorDTO.getValue() <= 15) {
+        if (sensorDTO.getValue() < 0) {
             eventDTO.setLevel(EventLevel.DANGER);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received.Something wrong with the air condition");
-        } else if (sensorDTO.getValue() >= 15 && sensorDTO.getValue() <= 20) {
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Something is wrong with the sensor!");
+        } else if (sensorDTO.getValue() >= 0 && sensorDTO.getValue() < 3) {
             eventDTO.setLevel(EventLevel.WARN);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Too high, you must heat the environment!");
-        } else if (sensorDTO.getValue() > 20  && sensorDTO.getValue() < 28) {
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Not good for windsurfing :/");
+        } else if (sensorDTO.getValue() >= 3 && sensorDTO.getValue() <= 6) {
             eventDTO.setLevel(EventLevel.NORMAL);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Everything seems ok.");
-        } else if (sensorDTO.getValue() >= 28 && sensorDTO.getValue() <= 32){
-            eventDTO.setLevel(EventLevel.WARN);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Too high, you must cool the environment!");
-        }else if (sensorDTO.getValue() > 32){
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Go to the sea, wind's great for windsurfing :)");
+        } else if (sensorDTO.getValue() > 6) {
             eventDTO.setLevel(EventLevel.DANGER);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received.Something wrong with ventilation");
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Dangerous winds, no windsurfing!");
         }
 
-//      Return the eventDTO object
+        // Return the eventDTO object
         return eventDTO;
     }
 }
