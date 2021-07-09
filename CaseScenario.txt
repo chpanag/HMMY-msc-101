@@ -1,0 +1,16 @@
+The need to monitor a person's temperature is crusial during COVID-19 days.
+In our system we try to monitor the body temperature of a person and extract useful
+information about the state of health.
+A special body temperature sensor (MQTT Broker in our case) sends temperature values
+and special events are created.
+Our system could be used in metropolitan hospitals, with the intention to aleviate the 
+problem of constant temperature monitor of patients, keeping the medical staff away from 
+other patients who are in greater need.
+
+The body norms we use:
+NORMAL TEMP: 36.1 oC - 37.2 oC
+LOW temp: 35.2 oc - 36.2 oC
+High Temp: 37.3 oC - 39.8 oc
+VERY high temp: 40 oC -42 oC
+
+special events are generated in case of false indications.
