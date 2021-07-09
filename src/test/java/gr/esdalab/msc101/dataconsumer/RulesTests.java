@@ -18,12 +18,11 @@ class RulesTests {
 
     private static final Logger log = LogManager.getLogger(RulesTests.class);
 
-
-    SensorDTO outOfOperationLowSensorDTO = new SensorDTO("temp", 5.0);
-    SensorDTO outOfOperationHighSensorDTO = new SensorDTO("temp", 50.0);
-    SensorDTO heatSensorDTO = new SensorDTO("temp", 32.0);
-    SensorDTO coolSensorDTO = new SensorDTO("temp", 16.0);
-    SensorDTO normalSensorDTO = new SensorDTO("temp", 22.0);
+    SensorDTO outOfOperationLowSensorDTO = new SensorDTO("pH", 0.0);
+    SensorDTO outOfOperationHighSensorDTO = new SensorDTO("pH", 14.0);
+    SensorDTO acidicSensorDTO = new SensorDTO("pH", 8.0);
+    SensorDTO basicSensorDTO = new SensorDTO("pH", 4.0);
+    SensorDTO normalSensorDTO = new SensorDTO("pH", 6.0);
 
     @Autowired
     RuleService ruleService;
@@ -45,12 +44,12 @@ class RulesTests {
 
     @Test
     void testHeat() {
-        assertEquals(EventLevel.WARN, ruleService.processData(heatSensorDTO).getLevel());
+        assertEquals(EventLevel.WARN, ruleService.processData(acidicSensorDTO).getLevel());
     }
 
     @Test
     void testCool() {
-        assertEquals(EventLevel.WARN, ruleService.processData(coolSensorDTO).getLevel());
+        assertEquals(EventLevel.WARN, ruleService.processData(basicSensorDTO).getLevel());
     }
 
     @Test
