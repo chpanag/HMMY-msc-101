@@ -17,21 +17,21 @@ public class RuleService {
         EventDTO eventDTO = new EventDTO();
 
         // @TODO Implement your own rules and populate the eventDTO object
-        if (sensorDTO.getValue() <= 15) {
+        if (sensorDTO.getValue() <= 3) {
             eventDTO.setLevel(EventLevel.DANGER);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received.Something wrong with the air condition");
-        } else if (sensorDTO.getValue() >= 15 && sensorDTO.getValue() <= 20) {
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. pH too basic");
+        } else if (sensorDTO.getValue() > 3 && sensorDTO.getValue() <= 5) {
             eventDTO.setLevel(EventLevel.WARN);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Too high, you must heat the environment!");
-        } else if (sensorDTO.getValue() > 20  && sensorDTO.getValue() < 28) {
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. ph turns basic");
+        } else if (sensorDTO.getValue() > 5  && sensorDTO.getValue() <= 7) {
             eventDTO.setLevel(EventLevel.NORMAL);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Everything seems ok.");
-        } else if (sensorDTO.getValue() >= 28 && sensorDTO.getValue() <= 32){
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Perfect ph conditions.");
+        } else if (sensorDTO.getValue() >= 7 && sensorDTO.getValue() <= 9){
             eventDTO.setLevel(EventLevel.WARN);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Too high, you must cool the environment!");
-        }else if (sensorDTO.getValue() > 32){
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. pH turns acidic");
+        }else if (sensorDTO.getValue() > 9 && sensorDTO.getValue() <= 14){
             eventDTO.setLevel(EventLevel.DANGER);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received.Something wrong with ventilation");
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. pH too acidic");
         }
 
 //      Return the eventDTO object
