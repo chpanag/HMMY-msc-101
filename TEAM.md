@@ -1,7 +1,7 @@
 # Team info
 
-Aristeidis Koutoulogenis
-Alexandros Pappas
+Aristeidis Koutoulogenis, AM: 2009
+Alexandros Pappas, AM: 2017
 
 # pH measurement in a greenhouse plant
 
