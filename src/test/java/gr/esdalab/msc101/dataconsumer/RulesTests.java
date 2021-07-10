@@ -19,11 +19,11 @@ class RulesTests {
     private static final Logger log = LogManager.getLogger(RulesTests.class);
 
 
-    SensorDTO outOfOperationLowSensorDTO = new SensorDTO("temp", 5.0);
-    SensorDTO outOfOperationHighSensorDTO = new SensorDTO("temp", 50.0);
-    SensorDTO heatSensorDTO = new SensorDTO("temp", 32.0);
-    SensorDTO coolSensorDTO = new SensorDTO("temp", 16.0);
-    SensorDTO normalSensorDTO = new SensorDTO("temp", 22.0);
+    SensorDTO outOfOperationLowSensorDTO = new SensorDTO("temp", 35.8);
+    SensorDTO outOfOperationHighSensorDTO = new SensorDTO("temp", 41.9);
+    SensorDTO heatSensorDTO = new SensorDTO("temp", 38.8);
+    SensorDTO coolSensorDTO = new SensorDTO("temp", 37.5);
+    SensorDTO normalSensorDTO = new SensorDTO("temp", 36.6);
 
     @Autowired
     RuleService ruleService;
