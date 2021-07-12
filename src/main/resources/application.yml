@@ -5,5 +5,5 @@ mqtt:
   broker-url: tcp://${BROKER_DOMAIN:test.mosquitto.org}:${BROKER_PORT:1883}		# The address and port of your own server need to be changed
   clientID: client1						                                        # This change is not optional, but different clients must not be the same
   topics:                                                                       # Topics, update accordingly
-    sensors: hmmy/msc/101/sensors
-    events: hmmy/msc/101/events
+    sensors: hmmy/msc/101/bodytemp
+    events: hmmy/msc/101/actions

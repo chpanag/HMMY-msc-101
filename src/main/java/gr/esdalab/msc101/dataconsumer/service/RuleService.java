@@ -17,22 +17,27 @@ public class RuleService {
         EventDTO eventDTO = new EventDTO();
 
         // @TODO Implement your own rules and populate the eventDTO object
-        if (sensorDTO.getValue() <= 15) {
+        
+        if (sensorDTO.getValue() < 36 && sensorDTO.getValue() >=34 ) {
             eventDTO.setLevel(EventLevel.DANGER);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received.Something wrong with the air condition");
-        } else if (sensorDTO.getValue() >= 15 && sensorDTO.getValue() <= 20) {
-            eventDTO.setLevel(EventLevel.WARN);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Too high, you must heat the environment!");
-        } else if (sensorDTO.getValue() > 20  && sensorDTO.getValue() < 28) {
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. You have hypothermia");
+        } else if (sensorDTO.getValue() < 34) {
+                eventDTO.setLevel(EventLevel.WARN);
+                eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Please check your thermometer. Maybe is broken");
+        } else if (sensorDTO.getValue() >= 36 && sensorDTO.getValue() <= 37.2) {
             eventDTO.setLevel(EventLevel.NORMAL);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Everything seems ok.");
-        } else if (sensorDTO.getValue() >= 28 && sensorDTO.getValue() <= 32){
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Your temperature is normal");
+        } else if (sensorDTO.getValue() > 37.2  && sensorDTO.getValue() < 39) {
             eventDTO.setLevel(EventLevel.WARN);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Too high, you must cool the environment!");
-        }else if (sensorDTO.getValue() > 32){
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. You have fever and you need to get medicines.");
+        } else if (sensorDTO.getValue() >= 39 && sensorDTO.getValue() <= 42){
             eventDTO.setLevel(EventLevel.DANGER);
-            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received.Something wrong with ventilation");
-        }
+            eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. You have high fever and you need to go to hospital");    
+    	} else if (sensorDTO.getValue() >42){
+        eventDTO.setLevel(EventLevel.WARN);
+        eventDTO.setMessage("Value " + sensorDTO.getValue() + " received. Please check your thermometer. Maybe is broken.");
+    	}    
+       
 
 //      Return the eventDTO object
         return eventDTO;
