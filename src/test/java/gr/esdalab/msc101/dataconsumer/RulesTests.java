@@ -19,11 +19,21 @@ class RulesTests {
     private static final Logger log = LogManager.getLogger(RulesTests.class);
 
 
-    SensorDTO outOfOperationLowSensorDTO = new SensorDTO("temp", 5.0);
-    SensorDTO outOfOperationHighSensorDTO = new SensorDTO("temp", 50.0);
-    SensorDTO heatSensorDTO = new SensorDTO("temp", 32.0);
-    SensorDTO coolSensorDTO = new SensorDTO("temp", 16.0);
-    SensorDTO normalSensorDTO = new SensorDTO("temp", 22.0);
+    SensorDTO tempLowSensorDTO = new SensorDTO("temp", 15.0);
+    SensorDTO tempNormalSensorDTO = new SensorDTO("temp", 18.0);
+    SensorDTO tempHighSensorDTO = new SensorDTO("temp", 20.0);
+    SensorDTO tempOutOfBoundsSensorDTO = new SensorDTO("temp", 25.0);
+    SensorDTO relHumLowSensorDTO = new SensorDTO("relhum", 43.0);
+    SensorDTO relHumSubNormalSensorDTO = new SensorDTO("relhum", 52.0);
+    SensorDTO relHumNormalSensorDTO = new SensorDTO("relhum", 56.5);
+    SensorDTO relHumOverNormalSensorDTO = new SensorDTO("relhum", 62.0);
+    SensorDTO relHumOutOfBoundsSensorDTO = new SensorDTO("relhum", 70.2);
+    SensorDTO pressLowSensorDTO = new SensorDTO("press", 0.8);
+    SensorDTO pressNormalSensorDTO = new SensorDTO("press", 1.1);
+    SensorDTO pressHighSensorDTO = new SensorDTO("press", 1.3);
+    SensorDTO concentrNormalSensorDTO = new SensorDTO("quality", 580.0);
+    SensorDTO concentrRisingSensorDTO = new SensorDTO("quality", 620.0);
+    SensorDTO concentrHighSensorDTO = new SensorDTO("quality", 735.0);
 
     @Autowired
     RuleService ruleService;
@@ -34,28 +44,78 @@ class RulesTests {
     }
 
     @Test
-    void testOutOfOperationLow() {
-        assertEquals(EventLevel.DANGER, ruleService.processData(outOfOperationLowSensorDTO).getLevel());
+    void testTempLow() {
+        assertEquals(EventLevel.DANGER, ruleService.processData(tempLowSensorDTO).getLevel());
     }
 
     @Test
-    void testOutOfOperationHigh() {
-        assertEquals(EventLevel.DANGER, ruleService.processData(outOfOperationHighSensorDTO).getLevel());
+    void testTempNormal() {
+        assertEquals(EventLevel.NORMAL, ruleService.processData(tempNormalSensorDTO).getLevel());
     }
 
     @Test
-    void testHeat() {
-        assertEquals(EventLevel.WARN, ruleService.processData(heatSensorDTO).getLevel());
+    void testTempHigh() {
+        assertEquals(EventLevel.WARN, ruleService.processData(tempHighSensorDTO).getLevel());
     }
 
     @Test
-    void testCool() {
-        assertEquals(EventLevel.WARN, ruleService.processData(coolSensorDTO).getLevel());
+    void testTempOut() {
+        assertEquals(EventLevel.DANGER, ruleService.processData(tempOutOfBoundsSensorDTO).getLevel());
     }
 
     @Test
-    void testNormal() {
-        assertEquals(EventLevel.NORMAL, ruleService.processData(normalSensorDTO).getLevel());
+    void testHumLow() {
+        assertEquals(EventLevel.DANGER, ruleService.processData(relHumLowSensorDTO).getLevel());
     }
-
+    
+    @Test
+    void testHumSub() {
+        assertEquals(EventLevel.WARN, ruleService.processData(relHumSubNormalSensorDTO).getLevel());
+    }
+    
+    
+    @Test
+    void testHumNormal() {
+        assertEquals(EventLevel.NORMAL, ruleService.processData(relHumNormalSensorDTO).getLevel());
+    }
+    
+    @Test
+    void testHumOver() {
+        assertEquals(EventLevel.WARN, ruleService.processData(relHumOverNormalSensorDTO).getLevel());
+    }
+    
+    @Test
+    void testHumOut() {
+        assertEquals(EventLevel.DANGER, ruleService.processData(relHumOutOfBoundsSensorDTO).getLevel());
+    }
+    
+    @Test
+    void testPressLow() {
+        assertEquals(EventLevel.DANGER, ruleService.processData(pressLowSensorDTO).getLevel());
+    }
+    
+    @Test
+    void testPressNormal() {
+        assertEquals(EventLevel.NORMAL, ruleService.processData(pressNormalSensorDTO).getLevel());
+    }
+    
+    @Test
+    void testPressHigh() {
+        assertEquals(EventLevel.WARN, ruleService.processData(pressHighSensorDTO).getLevel());
+    }
+    
+    @Test
+    void testConcentrNormal() {
+        assertEquals(EventLevel.NORMAL, ruleService.processData(concentrNormalSensorDTO).getLevel());
+    }
+    
+    @Test
+    void testConcentrHigh() {
+        assertEquals(EventLevel.WARN, ruleService.processData(concentrRisingSensorDTO).getLevel());
+    }
+    
+    @Test
+    void testConcentrOut() {
+        assertEquals(EventLevel.DANGER, ruleService.processData(concentrHighSensorDTO).getLevel());
+    }
 }
