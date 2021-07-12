@@ -20,10 +20,10 @@ class RulesTests {
 
 
     SensorDTO outOfOperationLowSensorDTO = new SensorDTO("temp", 5.0);
-    SensorDTO outOfOperationHighSensorDTO = new SensorDTO("temp", 50.0);
-    SensorDTO heatSensorDTO = new SensorDTO("temp", 32.0);
-    SensorDTO coolSensorDTO = new SensorDTO("temp", 16.0);
-    SensorDTO normalSensorDTO = new SensorDTO("temp", 22.0);
+    SensorDTO outOfOperationHighSensorDTO = new SensorDTO("temp", 100.0);
+    SensorDTO heatSensorDTO = new SensorDTO("temp", 40.0);
+    SensorDTO coolSensorDTO = new SensorDTO("temp", 35.0);
+    SensorDTO normalSensorDTO = new SensorDTO("temp", 36.5);
 
     @Autowired
     RuleService ruleService;
@@ -35,22 +35,22 @@ class RulesTests {
 
     @Test
     void testOutOfOperationLow() {
-        assertEquals(EventLevel.DANGER, ruleService.processData(outOfOperationLowSensorDTO).getLevel());
+        assertEquals(EventLevel.WARN, ruleService.processData(outOfOperationLowSensorDTO).getLevel());
     }
 
     @Test
     void testOutOfOperationHigh() {
-        assertEquals(EventLevel.DANGER, ruleService.processData(outOfOperationHighSensorDTO).getLevel());
+        assertEquals(EventLevel.WARN, ruleService.processData(outOfOperationHighSensorDTO).getLevel());
     }
 
     @Test
     void testHeat() {
-        assertEquals(EventLevel.WARN, ruleService.processData(heatSensorDTO).getLevel());
+        assertEquals(EventLevel.DANGER, ruleService.processData(heatSensorDTO).getLevel());
     }
 
     @Test
     void testCool() {
-        assertEquals(EventLevel.WARN, ruleService.processData(coolSensorDTO).getLevel());
+        assertEquals(EventLevel.DANGER, ruleService.processData(coolSensorDTO).getLevel());
     }
 
     @Test
