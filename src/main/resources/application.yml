@@ -3,7 +3,13 @@ mqtt:
   username: username
   password: password
   broker-url: tcp://${BROKER_DOMAIN:test.mosquitto.org}:${BROKER_PORT:1883}		# The address and port of your own server need to be changed
+  # broker-url: tcp://${BROKER_DOMAIN:test.mosca.io}:${BROKER_PORT:80}	
   clientID: client1						                                        # This change is not optional, but different clients must not be the same
   topics:                                                                       # Topics, update accordingly
-    sensors: hmmy/msc/101/sensors
-    events: hmmy/msc/101/events
+    tmp-sensors: hmmy/msc/101/tmp-sensors
+    humsensors: hmmy/msc/101/rel-hum-sensors
+    presssensors: hmmy/msc/101/int-press-sensors
+    qualitysensors: hmmy/msc/101/air-quality-sensors
+    tmpevents: hmmy/msc/101/tmp-events
+    pressevents: hmmy/msc/101/press-events
+    qualityevents: hmmy/msc/101/airq-events
