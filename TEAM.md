@@ -1,7 +1,7 @@
 # TEAM01
 
-* Fotis Zafiropoulos
-* Michalis Nanos
+* Fotis Zafiropoulos (AM 2005)
+* Michalis Nanos (AM 2012)
 
 # Scenario
 
