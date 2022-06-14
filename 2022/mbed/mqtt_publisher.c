@@ -24,15 +24,6 @@ C12832 lcd(LCD_MOSI, LCD_SCK, LCD_MISO, LCD_A0, LCD_NCS);
 int arrivedcount = 0;
  
  
-void messageArrived(MQTT::MessageData& md)
-{
-    MQTT::Message &message = md.message;
-    logMessage("Message arrived: qos %d, retained %d, dup %d, packetid %d\r\n", message.qos, message.retained, message.dup, message.id);
-    logMessage("Payload %.*s\r\n", message.payloadlen, (char*)message.payload);
-    ++arrivedcount;
-}
- 
- 
 int main(int argc, char* argv[])
 {
     // MQTT broker hostname
@@ -46,7 +37,7 @@ int main(int argc, char* argv[])
     const char* TEMPERATURE_TOPIC = "/uop/msc/hmmy101/iot/temperature";
     const char* HUMIDITY_TOPIC = "/uop/msc/hmmy101/iot/humidity";
  
-    logMessage("HelloMQTT: version is %.2f\r\n", version);
+    logMessage("Hello HMMY 101");
  
     NetworkInterface* network = easy_connect(true);
     if (!network) {
@@ -74,23 +65,20 @@ int main(int argc, char* argv[])
     if ((rc = client.connect(data)) != 0)
         logMessage("rc from MQTT connect is %d\r\n", rc);
  
-    if ((rc = client.subscribe(TEMPERATURE_TOPIC, MQTT::QOS2, messageArrived)) != 0)
-        logMessage("rc from MQTT subscribe is %d\r\n", rc);
- 
     MQTT::Message message;
  
     char buf[100];
     sprintf(buf, "%f", sample_sensor_value);
-    
+
     message.qos = MQTT::QOS0;
     message.retained = false;
     message.dup = false;
     message.payload = (void*)buf;
     message.payloadlen = strlen(buf)+1;
+    
     rc = client.publish(TEMPERATURE_TOPIC, message);
-    while (arrivedcount < 1)
-        client.yield(100);
- 
+    client.yield(100);
+    
     if ((rc = client.unsubscribe(TEMPERATURE_TOPIC)) != 0)
         logMessage("rc from unsubscribe was %d\r\n", rc);
  
@@ -98,8 +86,6 @@ int main(int argc, char* argv[])
         logMessage("rc from disconnect was %d\r\n", rc);
  
     mqttNetwork.disconnect();
- 
-    logMessage("Version %.2f: finish %d msgs\r\n", version, arrivedcount);
  
     return 0;
 }

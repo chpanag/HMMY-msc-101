@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
     const char* TEMPERATURE_TOPIC = "/uop/msc/hmmy101/iot/temperature";
     const char* HUMIDITY_TOPIC = "/uop/msc/hmmy101/iot/humidity";
  
-    logMessage("HelloMQTT: version is %.2f\r\n", version);
+    logMessage("Hello HMMY 101");
  
     NetworkInterface* network = easy_connect(true);
     if (!network) {
@@ -76,20 +76,7 @@ int main(int argc, char* argv[])
  
     if ((rc = client.subscribe(TEMPERATURE_TOPIC, MQTT::QOS2, messageArrived)) != 0)
         logMessage("rc from MQTT subscribe is %d\r\n", rc);
- 
-    MQTT::Message message;
- 
-    char buf[100];
-    sprintf(buf, "%f", sample_sensor_value);
-    
-    message.qos = MQTT::QOS0;
-    message.retained = false;
-    message.dup = false;
-    message.payload = (void*)buf;
-    message.payloadlen = strlen(buf)+1;
-    rc = client.publish(TEMPERATURE_TOPIC, message);
-    while (arrivedcount < 1)
-        client.yield(100);
+
  
     if ((rc = client.unsubscribe(TEMPERATURE_TOPIC)) != 0)
         logMessage("rc from unsubscribe was %d\r\n", rc);
@@ -99,7 +86,7 @@ int main(int argc, char* argv[])
  
     mqttNetwork.disconnect();
  
-    logMessage("Version %.2f: finish %d msgs\r\n", version, arrivedcount);
+    logMessage("Arrived %d msgs\r\n", arrivedcount);
  
     return 0;
 }
