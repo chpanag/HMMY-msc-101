@@ -36,7 +36,7 @@ void messageArrived(MQTT::MessageData& md)
 int main(int argc, char* argv[])
 {
     // MQTT broker hostname
-    const char* HOST = "dock1.pikei.io";
+    const char* HOST = "37.59.74.5";
     // MQTT broker port
     const int PORT = 1884;
 
